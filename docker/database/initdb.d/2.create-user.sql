@@ -1,0 +1,13 @@
+START TRANSACTION;
+
+CREATE USER tester IDENTIFIED BY 'tester';
+GRANT ALL PRIVILEGES ON hoge.* TO tester IDENTIFIED BY 'tester';
+GRANT ALL PRIVILEGES ON fuga.* TO tester IDENTIFIED BY 'tester';
+
+CREATE USER tester@'localhost' IDENTIFIED BY 'tester';
+GRANT ALL PRIVILEGES ON hoge.* TO tester@'localhost' IDENTIFIED BY 'tester';
+GRANT ALL PRIVILEGES ON fuga.* TO tester@'localhost' IDENTIFIED BY 'tester';
+
+COMMIT;
+
+FLUSH PRIVILEGES;

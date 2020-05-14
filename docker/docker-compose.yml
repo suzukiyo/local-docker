@@ -1,0 +1,19 @@
+version: '3'
+services:
+  mysql:
+    build: ./docker/db/mysql
+      ports:
+        - "3306:3306"
+      environment:
+        MYSQL_ROOT_PASSWORD: secret
+      volumes:
+        - "./docker/datastore/mysql:/var/lib/mysql"
+        - "./docker/db/mysql/initdb.d:/initdb.d"
+  redis:
+    build: ./docker/redis
+    ports:
+      - "6379:6379"
+    environment:
+      TZ: "Asia/Tokyo"
+    volumes:
+      - "./docker/datastore/redis:/data"
